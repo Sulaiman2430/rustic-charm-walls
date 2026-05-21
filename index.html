@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rustic Charm Walls — Handcrafted Mandala Art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --teal: #2a9d8f;
+  --teal-light: #4ecdc4;
+  --teal-dark: #1a6b61;
+  --coral: #e8856a;
+  --pink: #e87cb0;
+  --dark: #0d0d12;
+  --dark2: #13131a;
+  --dark3: #1a1a24;
+  --text: #f0ede6;
+  --text-muted: #a09880;
+  --white: #ffffff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── CURSOR ─── */
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top:0; left:0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  position: fixed; top:0; left:0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: transform 0.18s ease, opacity 0.3s;
+  opacity: 0.6;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: linear-gradient(to bottom, rgba(13,13,18,0.97) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s;
+}
+nav.scrolled {
+  background: rgba(13,13,18,0.97);
+  padding: 0.9rem 3rem;
+}
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--text); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.55rem 1.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+/* ─── HAMBURGER ─── */
+.hamburger { display: none; flex-direction: column; gap:5px; cursor:pointer; }
+.hamburger span { width:24px; height:2px; background:var(--gold); transition:0.3s; display:block; }
+.mobile-menu {
+  display: none;
+  position: fixed; top:0; left:0; right:0; bottom:0;
+  background: rgba(13,13,18,0.98);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-close {
+  position: absolute; top: 1.5rem; right: 2rem;
+  font-size: 2rem; color: var(--gold); cursor: pointer; background:none; border:none;
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 60% 40%, #1a2a2a 0%, #0d0d12 70%);
+}
+
+.hero-mandala-bg {
+  position: absolute;
+  width: 700px; height: 700px;
+  right: -100px; top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.08;
+  animation: slowSpin 60s linear infinite;
+}
+
+@keyframes slowSpin { to { transform: translateY(-50%) rotate(360deg); } }
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 700px;
+  padding: 0 2rem;
+  animation: fadeUp 1.2s ease both;
+}
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(40px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.4rem 1.2rem;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 1.2s 0.2s ease both;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 1.2s 0.4s ease both;
+}
+.hero-title .accent { color: var(--gold); }
+.hero-title .italic {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--teal-light);
+}
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 2.8rem;
+  animation: fadeUp 1.2s 0.6s ease both;
+}
+
+.hero-btns {
+  display: flex; gap: 1.2rem; flex-wrap: wrap;
+  animation: fadeUp 1.2s 0.8s ease both;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--dark);
+  padding: 1rem 2.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  border: none; cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  padding: 1rem 2.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-stats {
+  position: absolute;
+  bottom: 3rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 4rem;
+  animation: fadeUp 1.2s 1s ease both;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+.stat-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* Floating mandala shapes */
+.float-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.04;
+  animation: float 8s ease-in-out infinite;
+}
+.float-shape:nth-child(1) { width:300px; height:300px; background:var(--teal); top:10%; left:5%; animation-delay:0s; }
+.float-shape:nth-child(2) { width:180px; height:180px; background:var(--coral); bottom:20%; left:25%; animation-delay:3s; }
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+/* Live mandala canvas */
+.live-canvas-wrapper {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(45vw, 480px);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#liveCanvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(42,157,143,0.2), 0 0 200px rgba(201,168,76,0.05);
+}
+
+/* ─── SECTION COMMON ─── */
+section { padding: 7rem 2rem; position: relative; }
+
+.section-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.section-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin: 1.5rem 0;
+}
+
+/* ─── LIVE DASHBOARD ─── */
+#dashboard {
+  background: var(--dark2);
+  overflow: hidden;
+}
+.dashboard-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.dashboard-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.live-dot {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #5cdb95;
+  background: rgba(92,219,149,0.08);
+  border: 1px solid rgba(92,219,149,0.2);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+}
+.live-dot::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: #5cdb95;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(92,219,149,0.4); }
+  50% { opacity:0.7; box-shadow: 0 0 0 6px rgba(92,219,149,0); }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: 1.2rem;
+}
+
+/* Card base */
+.d-card {
+  background: var(--dark3);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.d-card:hover {
+  border-color: rgba(201,168,76,0.25);
+  transform: translateY(-3px);
+}
+.d-card::before {
+  content: '';
+  position: absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.d-card:hover::before { opacity: 0.6; }
+.d-card-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+}
+.d-card-value {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: var(--gold);
+  font-weight: 700;
+  line-height: 1;
+}
+.d-card-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+.d-card-trend {
+  font-size: 0.72rem;
+  color: #5cdb95;
+  margin-top: 0.5rem;
+}
+
+/* Grid layout */
+.gc-1 { grid-column: span 3; }
+.gc-2 { grid-column: span 4; }
+.gc-3 { grid-column: span 5; }
+.gc-full { grid-column: span 12; }
+.gc-6 { grid-column: span 6; }
+.gc-8 { grid-column: span 8; }
+.gc-4 { grid-column: span 4; }
+
+/* Activity chart */
+.chart-bar-wrap { display:flex; align-items:flex-end; gap:6px; height:70px; margin-top:1rem; }
+.chart-bar {
+  flex:1; background: linear-gradient(to top, var(--teal), var(--teal-light));
+  border-radius: 3px 3px 0 0;
+  min-height: 5px;
+  animation: growBar 1s ease both;
+}
+@keyframes growBar { from { transform: scaleY(0); transform-origin: bottom; } }
+
+/* Order status */
+.order-list { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.order-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.82rem;
+}
+.order-id { color: var(--text-muted); font-size: 0.72rem; }
+.badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.7rem;
+  border-radius: 2rem;
+}
+.badge-new { background: rgba(78,205,196,0.15); color: var(--teal-light); border: 1px solid rgba(78,205,196,0.3); }
+.badge-progress { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+.badge-done { background: rgba(92,219,149,0.12); color: #5cdb95; border: 1px solid rgba(92,219,149,0.3); }
+
+/* Mandala preview mini */
+.mini-mandala-grid { display: grid; grid-template-columns: repeat(3,1fr); gap:0.6rem; margin-top:1rem; }
+.mini-m {
+  aspect-ratio:1; border-radius:50%; cursor:pointer;
+  transition: transform 0.3s;
+}
+.mini-m:hover { transform: scale(1.1); }
+.mm-teal { background: radial-gradient(circle, #4ecdc4, #1a6b61, #0d0d12); }
+.mm-coral { background: radial-gradient(circle, #e8856a, #c0392b, #0d0d12); }
+.mm-gold { background: radial-gradient(circle, #e8c97a, #c9a84c, #0d0d12); }
+.mm-pink { background: radial-gradient(circle, #e87cb0, #8e2b5e, #0d0d12); }
+.mm-blue { background: radial-gradient(circle, #74b9ff, #2980b9, #0d0d12); }
+.mm-green { background: radial-gradient(circle, #a8e6cf, #2d8c5a, #0d0d12); }
+
+/* ─── PRODUCTS ─── */
+#collections {
+  background: var(--dark);
+}
+.collections-inner { max-width: 1300px; margin: 0 auto; }
+.collections-header { text-align: center; margin-bottom: 4rem; }
+
+.filter-tabs {
+  display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0;
+}
+.ftab {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.4rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.ftab.active, .ftab:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,168,76,0.06);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: var(--dark2);
+  border: 1px solid rgba(201,168,76,0.08);
+  overflow: hidden;
+  transition: all 0.4s;
+  cursor: pointer;
+  position: relative;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.product-img {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--dark3);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* SVG mandala previews */
+.mandala-svg {
+  width: 85%;
+  height: 85%;
+  transition: transform 0.6s ease;
+}
+.product-card:hover .mandala-svg { transform: rotate(15deg) scale(1.05); }
+
+.product-overlay {
+  position: absolute; inset:0;
+  background: linear-gradient(to top, rgba(13,13,18,0.95) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex; align-items: flex-end; justify-content: center; padding: 1.5rem;
+}
+.product-card:hover .product-overlay { opacity: 1; }
+.overlay-btn {
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  padding: 0.7rem 1.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+.overlay-btn:hover { background: var(--gold-light); }
+
+.product-tag {
+  position: absolute; top: 1rem; right: 1rem;
+  font-size: 0.6rem; letter-spacing: 0.2em;
+  padding: 0.3rem 0.7rem;
+  text-transform: uppercase;
+  background: var(--teal-dark);
+  color: var(--teal-light);
+  border: 1px solid var(--teal);
+}
+.product-tag.new { background: rgba(201,168,76,0.15); color: var(--gold); border-color: var(--gold); }
+.product-tag.sold { background: rgba(232,133,106,0.15); color: var(--coral); border-color: var(--coral); }
+
+.product-info { padding: 1.4rem; }
+.product-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.04em;
+}
+.product-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.product-footer {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.product-price {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+.product-size {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.2rem 0.6rem;
+}
+
+/* ─── ABOUT ─── */
+#about {
+  background: linear-gradient(135deg, var(--dark2) 0%, var(--dark) 100%);
+}
+.about-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+  height: 500px;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+  animation: slowSpin linear infinite;
+}
+.ar-1 { width:400px; height:400px; border-color:rgba(201,168,76,0.15); animation-duration:40s; }
+.ar-2 { width:300px; height:300px; border-color:rgba(42,157,143,0.2); animation-duration:30s; animation-direction:reverse; }
+.ar-3 { width:200px; height:200px; border-color:rgba(201,168,76,0.25); animation-duration:20s; }
+.about-center-art {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #4ecdc4, #1a6b61, #0a1a1a);
+  position: relative; z-index: 2;
+  box-shadow: 0 0 60px rgba(42,157,143,0.3);
+  display: flex; align-items: center; justify-content: center;
+}
+.about-content {}
+.about-features { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.af-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+.af-icon {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+.af-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+.af-text { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+/* ─── PROCESS ─── */
+#process {
+  background: var(--dark);
+  text-align: center;
+}
+.process-inner { max-width: 1100px; margin: 0 auto; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 35px; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+.step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1rem;
+}
+.step-num {
+  width: 70px; height: 70px;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  background: var(--dark2);
+  position: relative; z-index: 1;
+  transition: all 0.3s;
+}
+.step:hover .step-num {
+  background: var(--gold);
+  color: var(--dark);
+  box-shadow: 0 0 30px rgba(201,168,76,0.3);
+}
+.step-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+.step-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; max-width: 180px; }
+
+/* ─── ORDER ─── */
+#order {
+  background: var(--dark2);
+}
+.order-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+}
+.order-info .types { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.type-item {
+  display: flex; gap: 1rem; align-items: center;
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: border-color 0.3s;
+  cursor: pointer;
+}
+.type-item:hover { border-color: rgba(201,168,76,0.3); }
+.type-dot { width: 40px; height: 40px; border-radius: 50%; flex-shrink:0; }
+.type-name { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--text); }
+.type-desc { font-size: 0.73rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+/* Form */
+.order-form { background: var(--dark3); padding: 2.5rem; border: 1px solid rgba(201,168,76,0.1); }
+.form-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.05em;
+}
+.form-group { margin-bottom: 1.3rem; }
+.form-group label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--dark2);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  padding: 0.8rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+}
+.form-group textarea { height: 100px; resize: vertical; }
+.form-group select option { background: var(--dark2); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.submit-btn {
+  width: 100%;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  padding: 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+.submit-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+/* ─── TESTIMONIALS ─── */
+#testimonials {
+  background: var(--dark);
+  text-align: center;
+}
+.testimonials-inner { max-width: 1100px; margin: 0 auto; }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+.tcard {
+  background: var(--dark2);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding: 2rem;
+  text-align: left;
+  transition: all 0.3s;
+  position: relative;
+}
+.tcard:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-4px); }
+.tcard::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.15;
+  position: absolute;
+  top: 0.5rem; left: 1.2rem;
+}
+.tcard-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+.tcard-author { display: flex; align-items: center; gap: 1rem; }
+.tcard-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+.tcard-name { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--text); }
+.tcard-loc { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.2rem; }
+.stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 0.8rem; letter-spacing: 0.1em; }
+
+/* ─── INSTAGRAM ─── */
+#instagram {
+  background: var(--dark2);
+  text-align: center;
+}
+.insta-inner { max-width: 1100px; margin: 0 auto; }
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 3rem;
+}
+.insta-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.insta-item > div {
+  width: 100%; height: 100%;
+  transition: transform 0.4s;
+}
+.insta-item:hover > div { transform: scale(1.05); }
+.insta-overlay {
+  position: absolute; inset:0;
+  background: rgba(13,13,18,0.7);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 1.5rem;
+  color: var(--white);
+}
+.insta-item:hover .insta-overlay { opacity: 1; }
+.insta-follow {
+  margin-top: 2.5rem;
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.8rem 2rem;
+  transition: all 0.3s;
+}
+.insta-follow:hover { background: rgba(201,168,76,0.08); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 4rem 2rem 2rem;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+.footer-brand .nav-logo { font-size: 1.5rem; display:block; margin-bottom:1rem; }
+.footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; max-width: 280px; }
+.footer-col h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.social-links { display: flex; gap: 1rem; }
+.social-link {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+.social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ─── MODAL ─── */
+.modal-backdrop {
+  position: fixed; inset:0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  display: none; align-items: center; justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  background: var(--dark2);
+  border: 1px solid rgba(201,168,76,0.2);
+  max-width: 500px;
+  width: 90%;
+  padding: 2.5rem;
+  position: relative;
+  animation: fadeUp 0.4s ease both;
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1.2rem;
+  background: none; border: none;
+  color: var(--text-muted); font-size: 1.3rem;
+  cursor: pointer; transition: color 0.3s;
+}
+.modal-close:hover { color: var(--gold); }
+.modal h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.modal p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.modal-price { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--text); margin-bottom: 1.5rem; }
+.modal-price span { color: var(--text-muted); font-size: 1rem; }
+
+/* ─── TOAST ─── */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 2000;
+  background: var(--dark2);
+  border: 1px solid var(--gold);
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  display: none;
+  align-items: center; gap: 0.8rem;
+  animation: slideIn 0.4s ease;
+  max-width: 320px;
+}
+.toast.show { display: flex; }
+@keyframes slideIn {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.toast-icon { color: var(--gold); font-size: 1.2rem; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1100px) {
+  .gc-1 { grid-column: span 6; }
+  .gc-2 { grid-column: span 6; }
+  .gc-3 { grid-column: span 12; }
+  .gc-6 { grid-column: span 12; }
+  .gc-8 { grid-column: span 12; }
+  .gc-4 { grid-column: span 12; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-visual { height: 300px; }
+  .ar-1 { width:250px; height:250px; }
+  .ar-2 { width:190px; height:190px; }
+  .ar-3 { width:120px; height:120px; }
+  .order-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .hero-stats { gap: 2rem; }
+  .live-canvas-wrapper { display: none; }
+  .hero-content { text-align: center; }
+  .hero-btns { justify-content: center; }
+  .hero-sub { margin: 0 auto 2.8rem; }
+  .gc-1 { grid-column: span 12; }
+  .gc-2 { grid-column: span 12; }
+  .insta-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-inner { grid-template-columns: 1fr; }
+  .process-steps::before { display: none; }
+  section { padding: 5rem 1.5rem; }
+}
+@media (max-width: 480px) {
+  .hero-stats { flex-direction: column; gap: 1.5rem; }
+  .insta-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon">✦</span>
+  <span id="toastMsg">Order request sent! We'll contact you soon.</span>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modalTitle">Teal Ocean Mandala</h3>
+    <p id="modalDesc">Handcrafted octagonal mandala with intricate dot work and ocean-inspired blues. Each piece takes 7–10 days to create.</p>
+    <div class="modal-price" id="modalPrice">₹4,500 <span>+ shipping</span></div>
+    <a href="#order" class="btn-primary" onclick="closeModal()" style="display:inline-block">Order This Design</a>
+  </div>
+</div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <a href="#hero" onclick="closeMobile()">Home</a>
+  <a href="#dashboard" onclick="closeMobile()">Dashboard</a>
+  <a href="#collections" onclick="closeMobile()">Collections</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#order" onclick="closeMobile()">Order</a>
+  <a href="#instagram" onclick="closeMobile()">Instagram</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Rustic<span>Charm</span>Walls</a>
+  <ul class="nav-links">
+    <li><a href="#dashboard">Dashboard</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <a href="#order" class="nav-cta">Order Now</a>
+  <div class="hamburger" onclick="openMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="float-shape"></div>
+  <div class="float-shape"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">✦ Handcrafted Mandala Art ✦</div>
+    <h1 class="hero-title">
+      Where Every Wall<br>
+      <span class="italic">Tells a Story</span><br>
+      <span class="accent">in Colour</span>
+    </h1>
+    <p class="hero-sub">
+      Each piece is a meditative journey — hand-painted mandala art, Meenakari fusion, and dot work designs crafted with soul and precision.
+    </p>
+    <div class="hero-btns">
+      <a href="#collections" class="btn-primary">Explore Designs</a>
+      <a href="#order" class="btn-secondary">Custom Order</a>
+    </div>
+  </div>
+
+  <!-- Live Mandala Canvas -->
+  <div class="live-canvas-wrapper">
+    <canvas id="liveCanvas" width="480" height="480"></canvas>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Pieces Crafted</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Happy Homes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Handmade</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DASHBOARD -->
+<section id="dashboard">
+  <div class="dashboard-inner">
+    <div class="dashboard-header">
+      <div>
+        <div class="section-label">Live Overview</div>
+        <h2 class="section-title">Design Studio Dashboard</h2>
+      </div>
+      <div class="live-dot">Studio Live</div>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Stats row -->
+      <div class="d-card gc-1">
+        <div class="d-card-label">Total Designs</div>
+        <div class="d-card-value" id="dDesigns">0</div>
+        <div class="d-card-sub">Unique artworks</div>
+        <div class="d-card-trend">↑ 12 new this month</div>
+      </div>
+      <div class="d-card gc-1">
+        <div class="d-card-label">Orders This Week</div>
+        <div class="d-card-value" id="dOrders">0</div>
+        <div class="d-card-sub">Custom pieces</div>
+        <div class="d-card-trend">↑ 3 new today</div>
+      </div>
+      <div class="d-card gc-1">
+        <div class="d-card-label">Happy Clients</div>
+        <div class="d-card-value" id="dClients">0</div>
+        <div class="d-card-sub">Delivered homes</div>
+        <div class="d-card-trend">↑ 8 this month</div>
+      </div>
+      <div class="d-card gc-1">
+        <div class="d-card-label">Avg Rating</div>
+        <div class="d-card-value">4.9</div>
+        <div class="d-card-sub">★★★★★</div>
+        <div class="d-card-trend">Based on 45 reviews</div>
+      </div>
+      <div class="d-card gc-2">
+        <div class="d-card-label">Avg. Completion Time</div>
+        <div class="d-card-value">8 days</div>
+        <div class="d-card-sub">From order to delivery</div>
+        <div class="d-card-trend">↓ 2 days faster</div>
+      </div>
+      <div class="d-card gc-2">
+        <div class="d-card-label">Workshop Status</div>
+        <div class="d-card-value" style="font-size:1.2rem;color:#5cdb95">● Active</div>
+        <div class="d-card-sub">3 pieces in progress</div>
+        <div class="d-card-trend">Next available: 2 days</div>
+      </div>
+
+      <!-- Activity chart -->
+      <div class="d-card gc-6">
+        <div class="d-card-label">Monthly Orders (2025)</div>
+        <div class="chart-bar-wrap" id="chartBars"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:0.5rem;font-size:0.62rem;color:var(--text-muted)">
+          <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+        </div>
+      </div>
+
+      <!-- Mandala type mini -->
+      <div class="d-card gc-2">
+        <div class="d-card-label">Design Types</div>
+        <div class="mini-mandala-grid">
+          <div class="mini-m mm-teal" title="Teal Mandala"></div>
+          <div class="mini-m mm-coral" title="Coral Mandala"></div>
+          <div class="mini-m mm-gold" title="Gold Mandala"></div>
+          <div class="mini-m mm-pink" title="Pink Meenakari"></div>
+          <div class="mini-m mm-blue" title="Blue Ocean"></div>
+          <div class="mini-m mm-green" title="Forest Green"></div>
+        </div>
+      </div>
+
+      <!-- Recent orders -->
+      <div class="d-card gc-8">
+        <div class="d-card-label">Recent Orders</div>
+        <div class="order-list">
+          <div class="order-item">
+            <div>
+              <div>Teal Ocean Mandala — 24"</div>
+              <div class="order-id">#RCW-2025-047</div>
+            </div>
+            <span class="badge badge-progress">In Progress</span>
+          </div>
+          <div class="order-item">
+            <div>
+              <div>Meenakari Lotus — 18"</div>
+              <div class="order-id">#RCW-2025-046</div>
+            </div>
+            <span class="badge badge-new">New</span>
+          </div>
+          <div class="order-item">
+            <div>
+              <div>Pink Petal Mandala — 20"</div>
+              <div class="order-id">#RCW-2025-045</div>
+            </div>
+            <span class="badge badge-done">Delivered</span>
+          </div>
+          <div class="order-item">
+            <div>
+              <div>Blue Dot Work — 16"</div>
+              <div class="order-id">#RCW-2025-044</div>
+            </div>
+            <span class="badge badge-done">Delivered</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Currently crafting -->
+      <div class="d-card gc-4">
+        <div class="d-card-label">Currently Crafting</div>
+        <canvas id="craftCanvas" width="200" height="200" style="width:100%;margin-top:0.8rem;border-radius:50%"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section id="collections">
+  <div class="collections-inner">
+    <div class="collections-header">
+      <div class="section-label">Our Collections</div>
+      <h2 class="section-title">Handcrafted Mandala Designs</h2>
+      <div class="divider" style="margin:1rem auto"></div>
+      <p class="section-sub">Every piece is painted by hand — no two are exactly alike.</p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="ftab active" onclick="filterProducts('all',this)">All</button>
+      <button class="ftab" onclick="filterProducts('mandala',this)">Mandala</button>
+      <button class="ftab" onclick="filterProducts('meenakari',this)">Meenakari</button>
+      <button class="ftab" onclick="filterProducts('dotwork',this)">Dot Work</button>
+      <button class="ftab" onclick="filterProducts('custom',this)">Custom</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-ring ar-1"></div>
+      <div class="about-ring ar-2"></div>
+      <div class="about-ring ar-3"></div>
+      <div class="about-center-art">
+        <svg viewBox="0 0 80 80" width="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="30" stroke="#4ecdc4" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="40" cy="40" r="20" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="40" cy="40" r="8" fill="#4ecdc4" opacity="0.4"/>
+          <circle cx="40" cy="40" r="3" fill="#c9a84c"/>
+        </svg>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">Art That Lives<br>On Your Walls</h2>
+      <div class="divider"></div>
+      <p class="section-sub">
+        Rustic Charm Walls is a labour of love — every mandala is hand-painted with meditative focus, blending traditional Indian art forms like Meenakari with contemporary mandala geometry.
+      </p>
+      <div class="about-features">
+        <div class="af-item">
+          <div class="af-icon">✦</div>
+          <div>
+            <div class="af-title">100% Handmade</div>
+            <div class="af-text">No prints, no shortcuts. Every stroke is painted by hand on premium MDF or canvas board.</div>
+          </div>
+        </div>
+        <div class="af-item">
+          <div class="af-icon">◈</div>
+          <div>
+            <div class="af-title">Custom Sizes & Colours</div>
+            <div class="af-text">From 12" to 36" diameter. Match your wall's palette with custom color themes.</div>
+          </div>
+        </div>
+        <div class="af-item">
+          <div class="af-icon">❧</div>
+          <div>
+            <div class="af-title">Traditional Techniques</div>
+            <div class="af-text">Inspired by Rajasthani Meenakari, dot mandala art, and floral motif traditions.</div>
+          </div>
+        </div>
+        <div class="af-item">
+          <div class="af-icon">✿</div>
+          <div>
+            <div class="af-title">Mirror & Gemstone Work</div>
+            <div class="af-text">Select pieces feature embedded mirrors, beads, and decorative elements for extra dimension.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">From Concept to Your Wall</h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Choose Design</div>
+        <div class="step-text">Pick from existing collections or request a fully custom design</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Confirm Details</div>
+        <div class="step-text">Size, color palette, and any special requirements are finalised</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Crafting Begins</div>
+        <div class="step-text">Each piece is hand-painted over 3–10 days with care and precision</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Quality Check</div>
+        <div class="step-text">Thoroughly inspected and sealed with UV-resistant varnish</div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-title">Delivered</div>
+        <div class="step-text">Safely packed and shipped across India with tracking</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="order-inner">
+    <div class="order-info">
+      <div class="section-label">Place an Order</div>
+      <h2 class="section-title">Commission Your<br>Dream Piece</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Choose a design type and we'll craft it just for you.</p>
+
+      <div class="types">
+        <div class="type-item" onclick="selectType('Teal Ocean Mandala')">
+          <div class="type-dot mm-teal"></div>
+          <div>
+            <div class="type-name">Teal Ocean Mandala</div>
+            <div class="type-desc">Soothing blues, dot work, octagonal form</div>
+          </div>
+        </div>
+        <div class="type-item" onclick="selectType('Meenakari Lotus')">
+          <div class="type-dot mm-coral"></div>
+          <div>
+            <div class="type-name">Meenakari Lotus</div>
+            <div class="type-desc">Pink & coral petals, mirror work, floral centre</div>
+          </div>
+        </div>
+        <div class="type-item" onclick="selectType('Golden Mandala')">
+          <div class="type-dot mm-gold"></div>
+          <div>
+            <div class="type-name">Golden Mandala</div>
+            <div class="type-desc">Rich golds and earthy tones, classic symmetry</div>
+          </div>
+        </div>
+        <div class="type-item" onclick="selectType('Custom Design')">
+          <div class="type-dot" style="background:linear-gradient(135deg,#e87cb0,#4ecdc4,#c9a84c)"></div>
+          <div>
+            <div class="type-name">Custom Design</div>
+            <div class="type-desc">Fully personalised to your colour scheme & style</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-form">
+      <div class="form-title">✦ Request Your Order</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="fname" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="femail" placeholder="your@email.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Design Type</label>
+          <select id="fdesign">
+            <option value="">Select design</option>
+            <option>Teal Ocean Mandala</option>
+            <option>Meenakari Lotus</option>
+            <option>Blue Dot Mandala</option>
+            <option>Golden Mandala</option>
+            <option>Pink Petal Mandala</option>
+            <option>Custom Design</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Size</label>
+          <select id="fsize">
+            <option value="">Select size</option>
+            <option>12 inch</option>
+            <option>16 inch</option>
+            <option>18 inch</option>
+            <option>20 inch</option>
+            <option>24 inch</option>
+            <option>30 inch</option>
+            <option>36 inch</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Special Instructions / Color Preferences</label>
+        <textarea id="fnotes" placeholder="Describe any specific colour preferences, wall context, or customisations..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitOrder()">✦ SUBMIT ORDER REQUEST ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-label">Kind Words</div>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <div class="divider" style="margin:1rem auto"></div>
+    <div class="testimonials-grid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tcard-text">The teal mandala completely transformed my living room. The detail in the dot work is incredible — I keep discovering new patterns every time I look at it.</div>
+        <div class="tcard-author">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#4ecdc4,#1a6b61)">P</div>
+          <div>
+            <div class="tcard-name">Priya Mehta</div>
+            <div class="tcard-loc">Mumbai, Maharashtra</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tcard-text">Ordered a custom Meenakari piece for my pooja room. The mirror work catches the diya light beautifully. Exceeded all my expectations — truly museum-quality work.</div>
+        <div class="tcard-author">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#e87cb0,#8e2b5e)">S</div>
+          <div>
+            <div class="tcard-name">Sunita Rao</div>
+            <div class="tcard-loc">Bengaluru, Karnataka</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tcard-text">Got two pieces as housewarming gifts and both recipients were absolutely awestruck. The packaging was also stunning. Will definitely order again.</div>
+        <div class="tcard-author">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#c9a84c,#8b6914)">A</div>
+          <div>
+            <div class="tcard-name">Ankit Sharma</div>
+            <div class="tcard-loc">Jaipur, Rajasthan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram">
+  <div class="insta-inner">
+    <div class="section-label">Follow Our Journey</div>
+    <h2 class="section-title">@rustic_charm_walls</h2>
+    <div class="divider" style="margin:1rem auto"></div>
+    <p class="section-sub">Watch our artworks come to life on Instagram</p>
+    <div class="insta-grid">
+      <div class="insta-item">
+        <div style="background:radial-gradient(circle at 40% 40%, #4ecdc4 0%, #1a6b61 40%, #0a1a1a 100%);"></div>
+        <div class="insta-overlay">♡ 28</div>
+      </div>
+      <div class="insta-item">
+        <div style="background:radial-gradient(circle at 60% 50%, #e87cb0 0%, #8e2b5e 40%, #0a0a0a 100%);"></div>
+        <div class="insta-overlay">♡ 29</div>
+      </div>
+      <div class="insta-item">
+        <div style="background:radial-gradient(circle at 50% 30%, #e8856a 0%, #c0392b 40%, #0a0a0a 100%);"></div>
+        <div class="insta-overlay">♡ 34</div>
+      </div>
+      <div class="insta-item">
+        <div style="background:radial-gradient(circle at 45% 55%, #c9a84c 0%, #8b6914 40%, #0a0a0a 100%);"></div>
+        <div class="insta-overlay">♡ 21</div>
+      </div>
+      <div class="insta-item">
+        <div style="background:radial-gradient(circle at 55% 45%, #74b9ff 0%, #2980b9 40%, #0a0a0a 100%);"></div>
+        <div class="insta-overlay">♡ 41</div>
+      </div>
+      <div class="insta-item">
+        <div style="background:radial-gradient(circle at 40% 60%, #a8e6cf 0%, #2d8c5a 40%, #0a0a0a 100%);"></div>
+        <div class="insta-overlay">♡ 38</div>
+      </div>
+      <div class="insta-item">
+        <div style="background:radial-gradient(circle at 50% 40%, #fd79a8 0%, #d63031 40%, #0a0a0a 100%);"></div>
+        <div class="insta-overlay">♡ 52</div>
+      </div>
+      <div class="insta-item">
+        <div style="background:radial-gradient(circle at 45% 45%, #fdcb6e 0%, #e17055 40%, #0a0a0a 100%);"></div>
+        <div class="insta-overlay">♡ 44</div>
+      </div>
+    </div>
+    <a href="https://www.instagram.com/rustic_charm_walls" target="_blank" class="insta-follow">
+      <span>⊕</span> Follow @rustic_charm_walls
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo">Rustic<span>Charm</span>Walls</a>
+      <p>Handcrafted mandala and Meenakari wall art, made with love and meditative precision. Each piece is a unique original.</p>
+      <div class="social-links" style="margin-top:1.5rem">
+        <a href="https://www.instagram.com/rustic_charm_walls" target="_blank" class="social-link">ig</a>
+        <a href="#" class="social-link">wa</a>
+        <a href="#" class="social-link">fb</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Collections</h4>
+      <ul>
+        <li><a href="#collections">Teal Mandalas</a></li>
+        <li><a href="#collections">Meenakari Art</a></li>
+        <li><a href="#collections">Dot Work</a></li>
+        <li><a href="#collections">Custom Orders</a></li>
+        <li><a href="#collections">Gift Sets</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#instagram">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#order">Place Order</a></li>
+        <li><a href="https://wa.me/919999999999">WhatsApp Us</a></li>
+        <li><a href="https://www.instagram.com/rustic_charm_walls" target="_blank">Instagram DM</a></li>
+        <li><a href="mailto:rusticcharmwalls@gmail.com">Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Rustic Charm Walls. All rights reserved.</span>
+    <span>Made with ♥ for handmade art lovers</span>
+  </div>
+</footer>
+
+<script>
+// ─── CURSOR ───
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }, 80);
+});
+document.querySelectorAll('a,button,.product-card,.type-item').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.width = '18px'; cursor.style.height = '18px'; });
+  el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; });
+});
+
+// ─── NAV SCROLL ───
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// ─── MOBILE MENU ───
+function openMobile() { document.getElementById('mobileMenu').classList.add('open'); }
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ─── LIVE MANDALA CANVAS (HERO) ───
+(function() {
+  const canvas = document.getElementById('liveCanvas');
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+  function drawMandala() {
+    const W = canvas.width, H = canvas.height;
+    const cx = W/2, cy = H/2;
+    ctx.clearRect(0,0,W,H);
+    ctx.save();
+    ctx.translate(cx, cy);
+
+    // Outer glow
+    const grd = ctx.createRadialGradient(0,0,60,0,0,230);
+    grd.addColorStop(0,'rgba(42,157,143,0.15)');
+    grd.addColorStop(1,'rgba(13,13,18,0)');
+    ctx.beginPath(); ctx.arc(0,0,230,0,Math.PI*2);
+    ctx.fillStyle = grd; ctx.fill();
+
+    const layers = [
+      {r:200, petals:16, col:'rgba(42,157,143,0.18)', speed:0.0003},
+      {r:160, petals:12, col:'rgba(201,168,76,0.22)', speed:-0.0004},
+      {r:120, petals:10, col:'rgba(78,205,196,0.25)', speed:0.0005},
+      {r:80, petals:8, col:'rgba(232,133,106,0.2)', speed:-0.0006},
+      {r:50, petals:6, col:'rgba(201,168,76,0.35)', speed:0.001},
+    ];
+    layers.forEach(l => {
+      const angle = t * l.speed * 1000;
+      for(let i=0; i<l.petals; i++) {
+        const a = (Math.PI*2/l.petals)*i + angle;
+        ctx.save();
+        ctx.rotate(a);
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.quadraticCurveTo(l.r*0.4, -l.r*0.3, 0, l.r);
+        ctx.quadraticCurveTo(-l.r*0.4, -l.r*0.3, 0, 0);
+        ctx.fillStyle = l.col;
+        ctx.fill();
+        ctx.restore();
+      }
+    });
+
+    // Dot rings
+    [60,100,140,180].forEach((r,i) => {
+      const n = 8+i*4;
+      const baseAngle = t*(i%2===0?0.001:-0.001)*500;
+      for(let j=0;j<n;j++) {
+        const a = (Math.PI*2/n)*j + baseAngle;
+        ctx.beginPath();
+        ctx.arc(Math.cos(a)*r, Math.sin(a)*r, 2.5, 0, Math.PI*2);
+        ctx.fillStyle = i%2===0 ? 'rgba(201,168,76,0.5)' : 'rgba(78,205,196,0.5)';
+        ctx.fill();
+      }
+    });
+
+    // Center
+    const cg = ctx.createRadialGradient(0,0,0,0,0,25);
+    cg.addColorStop(0,'rgba(201,168,76,0.8)');
+    cg.addColorStop(1,'rgba(42,157,143,0.3)');
+    ctx.beginPath(); ctx.arc(0,0,25,0,Math.PI*2);
+    ctx.fillStyle = cg; ctx.fill();
+    ctx.beginPath(); ctx.arc(0,0,6,0,Math.PI*2);
+    ctx.fillStyle = '#c9a84c'; ctx.fill();
+
+    ctx.restore();
+    t++;
+    requestAnimationFrame(drawMandala);
+  }
+  drawMandala();
+})();
+
+// ─── CRAFT CANVAS (DASHBOARD) ───
+(function() {
+  const canvas = document.getElementById('craftCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let progress = 0;
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0,0,200,200);
+    ctx.save();
+    ctx.translate(100,100);
+    // Progress arc
+    ctx.beginPath();
+    ctx.arc(0,0,80, -Math.PI/2, -Math.PI/2 + Math.PI*2*(progress/100), false);
+    ctx.strokeStyle = '#c9a84c';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    // Petals
+    const n = 8;
+    for(let i=0;i<n;i++) {
+      const a = (Math.PI*2/n)*i + t*0.01;
+      ctx.save();
+      ctx.rotate(a);
+      ctx.beginPath();
+      ctx.moveTo(0,10);
+      ctx.quadraticCurveTo(25,-20,0,55);
+      ctx.quadraticCurveTo(-25,-20,0,10);
+      ctx.fillStyle = 'rgba(42,157,143,0.35)';
+      ctx.fill();
+      ctx.restore();
+    }
+    ctx.beginPath(); ctx.arc(0,0,12,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(201,168,76,0.6)'; ctx.fill();
+    ctx.restore();
+
+    progress = (progress < 72) ? progress + 0.2 : progress;
+    t++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── ANIMATED COUNTERS ───
+function animateCounter(el, target, duration) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if(start >= target) { el.textContent = target; clearInterval(timer); }
+    else el.textContent = Math.floor(start);
+  }, 16);
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      animateCounter(document.getElementById('dDesigns'), 47, 1500);
+      animateCounter(document.getElementById('dOrders'), 12, 1200);
+      animateCounter(document.getElementById('dClients'), 53, 1800);
+      observer.disconnect();
+    }
+  });
+});
+const dashEl = document.getElementById('dashboard');
+if(dashEl) observer.observe(dashEl);
+
+// ─── CHART BARS ───
+const data = [3,5,4,7,6,9,8,11,7,13,10,8];
+const max = Math.max(...data);
+const chartBars = document.getElementById('chartBars');
+data.forEach((v,i) => {
+  const bar = document.createElement('div');
+  bar.className = 'chart-bar';
+  bar.style.height = (v/max*100)+'%';
+  bar.style.animationDelay = (i*0.07)+'s';
+  chartBars.appendChild(bar);
+});
+
+// ─── PRODUCTS ───
+const products = [
+  { id:1, name:'Teal Ocean Mandala', type:'mandala', desc:'Octagonal dot-work mandala with soothing ocean blues and intricate petal layers. Handpainted on MDF.', price:'₹4,500', size:'20"', tag:'bestseller', colors:['#4ecdc4','#1a6b61','#0d0d12'] },
+  { id:2, name:'Meenakari Lotus Wall', type:'meenakari', desc:'Traditional Meenakari lotus motifs at the centre, surrounded by vivid pink and coral mandala petals with mirror inlays.', price:'₹5,800', size:'22"', tag:'new', colors:['#e87cb0','#e8856a','#0d0d12'] },
+  { id:3, name:'Blue Dot Mandala', type:'dotwork', desc:'Deep navy base with detailed dot-work in teal and white. A meditative piece with hypnotic symmetry.', price:'₹3,800', size:'18"', tag:'', colors:['#74b9ff','#2980b9','#0d0d12'] },
+  { id:4, name:'Golden Sunrise Mandala', type:'mandala', desc:'Warm golden tones with earthy ochre radiating outward in perfect symmetry. A regal statement piece.', price:'₹5,200', size:'24"', tag:'bestseller', colors:['#e8c97a','#c9a84c','#0d0d12'] },
+  { id:5, name:'Pink Petal Mandala', type:'mandala', desc:'Delicate pink and white petals fanning outward in layered mandala form. Perfect for bedroom walls.', price:'₹4,200', size:'18"', tag:'', colors:['#fd79a8','#e87cb0','#0d0d12'] },
+  { id:6, name:'Forest Green Mandala', type:'dotwork', desc:'Deep forest greens and jade tones with precise dot-work forming intricate geometric patterns.', price:'₹4,000', size:'20"', tag:'', colors:['#a8e6cf','#2d8c5a','#0d0d12'] },
+  { id:7, name:'Coral Meenakari Wheel', type:'meenakari', desc:'Vibrant coral and crimson with traditional Meenakari florals and embedded mirror work elements.', price:'₹6,200', size:'24"', tag:'new', colors:['#e8856a','#c0392b','#0d0d12'] },
+  { id:8, name:'Custom Design', type:'custom', desc:'Tell us your colour preferences, size, and style. We\'ll craft a completely unique piece just for your home.', price:'From ₹3,500', size:'Any', tag:'custom', colors:['#e87cb0','#4ecdc4','#c9a84c'] },
+];
+
+function renderMandala(ctx, colors, w, h) {
+  const cx = w/2, cy = h/2;
+  const grad = ctx.createRadialGradient(cx*0.8, cy*0.7, 0, cx, cy, cx*0.9);
+  grad.addColorStop(0, colors[0]);
+  grad.addColorStop(0.5, colors[1]);
+  grad.addColorStop(1, colors[2]);
+  ctx.fillStyle = grad;
+  ctx.fillRect(0,0,w,h);
+  ctx.save(); ctx.translate(cx,cy);
+  for(let ring=0;ring<4;ring++) {
+    const r = 30+ring*28;
+    const n = 6+ring*2;
+    for(let i=0;i<n;i++) {
+      const a = (Math.PI*2/n)*i + ring*0.3;
+      ctx.save(); ctx.rotate(a);
+      ctx.beginPath();
+      ctx.moveTo(0,5);
+      ctx.quadraticCurveTo(r*0.35, -r*0.25, 0, r);
+      ctx.quadraticCurveTo(-r*0.35, -r*0.25, 0, 5);
+      ctx.fillStyle = `rgba(255,255,255,${0.06+ring*0.03})`;
+      ctx.fill();
+      ctx.restore();
+    }
+    for(let i=0;i<n;i++) {
+      const a = (Math.PI*2/n)*i + ring*0.3 + Math.PI/n;
+      ctx.beginPath();
+      ctx.arc(Math.cos(a)*r, Math.sin(a)*r, 2, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.fill();
+    }
+  }
+  ctx.beginPath(); ctx.arc(0,0,10,0,Math.PI*2);
+  ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fill();
+  ctx.restore();
+}
+
+function buildProductCard(p) {
+  const div = document.createElement('div');
+  div.className = 'product-card';
+  div.dataset.type = p.type;
+
+  const tagHtml = p.tag === 'bestseller' ? `<div class="product-tag">Bestseller</div>`
+    : p.tag === 'new' ? `<div class="product-tag new">New</div>`
+    : p.tag === 'custom' ? `<div class="product-tag" style="background:rgba(78,205,196,0.15);color:var(--teal-light);border-color:var(--teal)">Custom</div>`
+    : '';
+
+  div.innerHTML = `
+    <div class="product-img">
+      ${tagHtml}
+      <canvas class="mandala-svg" width="280" height="280" style="border-radius:50%"></canvas>
+      <div class="product-overlay">
+        <button class="overlay-btn" onclick="openModal('${p.name}','${p.desc}','${p.price}')">View & Order</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <div class="product-name">${p.name}</div>
+      <div class="product-desc">${p.desc}</div>
+      <div class="product-footer">
+        <div class="product-price">${p.price}</div>
+        <div class="product-size">${p.size} diam.</div>
+      </div>
+    </div>
+  `;
+  document.getElementById('productsGrid').appendChild(div);
+  const canvas = div.querySelector('canvas');
+  const ctx = canvas.getContext('2d');
+  renderMandala(ctx, p.colors, 280, 280);
+  // animate on hover
+  div.addEventListener('mouseenter', () => {
+    let angle = 0;
+    const id = setInterval(() => {
+      ctx.clearRect(0,0,280,280);
+      ctx.save(); ctx.translate(140,140); ctx.rotate(angle+=0.01); ctx.translate(-140,-140);
+      renderMandala(ctx, p.colors, 280, 280);
+      ctx.restore();
+    }, 30);
+    div._rotateId = id;
+  });
+  div.addEventListener('mouseleave', () => {
+    clearInterval(div._rotateId);
+    ctx.clearRect(0,0,280,280);
+    renderMandala(ctx, p.colors, 280, 280);
+  });
+}
+
+products.forEach(buildProductCard);
+
+// ─── FILTER ───
+function filterProducts(type, btn) {
+  document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(c => {
+    c.style.display = (type === 'all' || c.dataset.type === type) ? 'block' : 'none';
+  });
+}
+
+// ─── MODAL ───
+function openModal(name, desc, price) {
+  document.getElementById('modalTitle').textContent = name;
+  document.getElementById('modalDesc').textContent = desc;
+  document.getElementById('modalPrice').innerHTML = price + ' <span>+ shipping</span>';
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+document.getElementById('modal').addEventListener('click', e => {
+  if(e.target === document.getElementById('modal')) closeModal();
+});
+
+// ─── SELECT TYPE ───
+function selectType(name) {
+  const sel = document.getElementById('fdesign');
+  for(let i=0; i<sel.options.length; i++) {
+    if(sel.options[i].text === name) { sel.selectedIndex = i; break; }
+  }
+  document.getElementById('order').scrollIntoView({behavior:'smooth'});
+}
+
+// ─── SUBMIT ───
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+function submitOrder() {
+  const name = document.getElementById('fname').value;
+  const phone = document.getElementById('fphone').value;
+  if(!name || !phone) { showToast('Please fill in your name and phone number.'); return; }
+  showToast('✦ Order request sent! We\'ll contact you on WhatsApp soon.');
+  document.getElementById('fname').value = '';
+  document.getElementById('fphone').value = '';
+  document.getElementById('femail').value = '';
+  document.getElementById('fdesign').selectedIndex = 0;
+  document.getElementById('fsize').selectedIndex = 0;
+  document.getElementById('fnotes').value = '';
+}
+
+// ─── INTERSECTION REVEAL ───
+const reveals = document.querySelectorAll('.d-card, .product-card, .step, .tcard, .type-item');
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  ro.observe(el);
+});
+</script>
+</body>
+</html>
